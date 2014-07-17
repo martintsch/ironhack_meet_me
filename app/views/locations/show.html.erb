@@ -1,0 +1,7 @@
+<h1><%= @location.name %></h1>
+
+<ul>
+  <% @location.attributes.except("id", "name").each do |key, value| %>
+    <li><%= key.humanize %>: <%= value %></li>
+  <% end %>
+</ul>
