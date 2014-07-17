@@ -2,10 +2,12 @@
 <ul>
   <% @locations.each do |location| %>
    <li>
-      <% if location.name.present? %>
-        <%= location.name %> -
+     <% if location.name.present? %>
+        <%= link_to location.name, location_visits_path(location) %> -
+        <%= location.city %>
+      <% else %>
+        <%= link_to location.city, location_visits_path(location) %>
       <% end %>
-      <%= location.city %>
     </li>
   <% end %>
 </ul>

@@ -1,5 +1,10 @@
-<h2><%= @location.name %> - <%= @location.city %></h2>
-<p>Visits this month: <%= @visits.count %></p>
+<% headline = @location.name.present? ? @location.name : @location.city %>
+
+<h2><%= link_to headline, location_path(@location) %></h2>
+<p>
+  Visits this month: <%= @visits.count %>
+  <%= link_to "Add Visit", new_location_visit_path(@location) %>
+</p>
 <ul>
   <% @visits.each do |visit| %>
     <li>
