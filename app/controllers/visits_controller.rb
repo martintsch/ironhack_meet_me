@@ -42,6 +42,13 @@ class VisitsController < ApplicationController
     end
   end
 
+  def destroy
+    @visit = Visit.find params[:id]
+    if @visit.destroy
+      redirect_to action: 'index', controller: 'visits', location_id: params[:location_id]
+    end
+  end
+
   private
 
   def visit_params
