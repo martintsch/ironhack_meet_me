@@ -5,6 +5,8 @@ class VisitsController < ApplicationController
   end
 
   def show
+    @location = Location.find(params[:location_id])
+    @visit = Visit.find params[:id]
   end
 
   def new
@@ -20,6 +22,23 @@ class VisitsController < ApplicationController
       redirect_to action: 'index', controller: 'visits', location_id: @location.id
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @location = Location.find(params[:location_id])
+    @visit = Visit.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:location_id])
+    @visit = Visit.find params[:id]
+    @visit.update_attributes visit_params
+
+    if @visit.save
+      redirect_to action: 'show', controller: 'visits', location_id: @location.id
+    else
+      render 'edit'
     end
   end
 
