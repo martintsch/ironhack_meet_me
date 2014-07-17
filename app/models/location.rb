@@ -3,7 +3,7 @@ class Location < ActiveRecord::Base
 
   scope :last_created, ->(limit) { order(created_at: :desc).limit(limit) }
 
-  validates :name, presence: true, length: { maximum: 30 }, format: { with: /[a-zA-Z]/ }
+  validates :name, presence: true, length: { maximum: 30 }, format: { with: /\A[a-zA-Z]*\z/ }
   validates :city, presence: true
 
   def self.iron_find(id)
