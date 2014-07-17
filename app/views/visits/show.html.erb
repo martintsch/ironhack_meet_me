@@ -1,0 +1,8 @@
+<h1><%= @visit.user_name %></h1>
+
+<ul>
+  <% @visit.attributes.except("id", "location_id").each do |key, value| %>
+    <li><%= key.humanize %>: <%= value %></li>
+  <% end %>
+</ul>
+<p><%= link_to "Visits", location_visits_path(@location) %></p>
