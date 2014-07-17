@@ -7,7 +7,7 @@ class Location < ActiveRecord::Base
     where(id: id).first
   end
 
-  def total_visits_in_month_of_year(month, year)
+  def visits_in_month_of_year(month, year)
     date = Date.new(year, month, 01)
     visits.where("from_date >= ? AND to_date < ?", date, date.end_of_month)
   end

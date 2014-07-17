@@ -1,4 +1,5 @@
 <h2><%= @location.name %> - <%= @location.city %></h2>
+<p>Visits this month: <%= @visits.count %></p>
 <ul>
   <% @visits.each do |visit| %>
     <li>
