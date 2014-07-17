@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @location = Location.find(params[:id])
+    @location = Location.find_by(id: params[:id])
+    render 'not_found', status: 404 unless @location
   end
 end
