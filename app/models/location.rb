@@ -6,4 +6,9 @@ class Location < ActiveRecord::Base
   def self.iron_find(id)
     where(id: id).first
   end
+
+  def total_visits_in_month_of_year(month, year)
+    date = Date.new(year, month, 01)
+    visits.where("from_date >= ? AND to_date < ?", date, date.end_of_month)
+  end
 end

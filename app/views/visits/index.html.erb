@@ -1,0 +1,10 @@
+<h2><%= @location.name %> - <%= @location.city %></h2>
+<ul>
+  <% @visits.each do |visit| %>
+    <li>
+      <%= visit.user_name %>
+      <br/>From: <%= visit.from_date %>
+      <br/>To: <%= visit.to_date %>
+    </li>
+  <% end %>
+</ul>
