@@ -3,6 +3,9 @@ class Location < ActiveRecord::Base
 
   scope :last_created, ->(limit) { order(created_at: :desc).limit(limit) }
 
+  validates :name, presence: true, length: { maximum: 30 }, format: { with: /[a-zA-Z]/ }
+  validates :city, presence: true
+
   def self.iron_find(id)
     where(id: id).first
   end
