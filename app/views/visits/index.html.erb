@@ -1,3 +1,5 @@
+<%= flash_message %>
+
 <% headline = @location.name.present? ? @location.name : @location.city %>
 
 <h2><%= link_to headline, location_path(@location) %></h2>
@@ -10,7 +12,7 @@
     <li>
       <%= visit.user_name %>
       <%= link_to 'edit', edit_location_visit_path(location_id: @location.id, id: visit.id) %>
-      <%= link_to 'delete', location_visit_path(@location, visit), method: 'delete', confirm: "Are you sure?" %>
+      <%= delete_visit_link(@location, visit) %>
       <br/>From: <%= visit.from_date %>
       <br/>To: <%= visit.to_date %>
     </li>
